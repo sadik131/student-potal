@@ -39,6 +39,9 @@
     width: 100%;
     padding: 10px 0;
     border: none;
+    background-color: #69298b;
+    color: white;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
 }

@@ -1,0 +1,27 @@
+.signin-form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+.radio-text{
+    display: inline-block;
+}
+.label-text{
+    font-size: 22px;
+}
+.radio{
+    margin-left: 10px;
+}
+.radio-section {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.radio-item {
+    display: flex;
+    align-items: center;
+}
+.radio-item input.radio{
+    height: 17px;
+    width: 25px;
+}
