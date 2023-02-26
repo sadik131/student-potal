@@ -1,0 +1,37 @@
+.banner-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+.banner-container img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    position: absolute;
+}
+
+.overly {}
+
+.banner-text {
+    position: relative;
+    width: 100%;
+    padding: 0 10%;
+    top: 100px;
+    bottom: 50%;
+}
+
+.banner-text p {
+    font-size: 1.9rem;
+    color: white;
+    text-align: center;
+}
+.banner-text button{
+    padding: 15px 20px;
+    margin: auto;
+    display: block;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #765e83;
+}
