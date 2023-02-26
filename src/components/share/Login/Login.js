@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import "./Login.css"
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
 
     return (
         <div className='login-container'>
+            <img src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7863.jpg?w=740&t=st=1677426372~exp=1677426972~hmac=25d6739d56bf9ab7fa8835895c425e0ebbe9865a9f7c64aab1515874dc1765bb" alt="" />
             <div className='login-form'>
                 <h1>Login</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -66,7 +68,7 @@ const Login = () => {
                     </div>
                     <input className='login-btn' type="submit" value="Login" />
                     <p className='forget'>forget Password?</p>
-                    <p className='create'>Create a new Account?</p>
+                    <Link to="/signup" className='create'>Create a new Account?</Link>
                 </form>
             </div>
         </div>

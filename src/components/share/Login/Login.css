@@ -2,15 +2,18 @@
     height: calc(100vh - 80px);
     width: 100%;
     display: flex;
-    background-color: aqua;
     justify-content: center;
     align-items: center;
 }
 
 .login-form {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 80px);
     padding: 84px 25px;
-    padding: 10px;
+    padding: 35px;
     border-radius: 10px;
     background-color: aliceblue;
 }
@@ -47,7 +50,11 @@
 }
 .login-form .forget , .create{
     margin: 10px 10px;
+
     cursor: pointer;
     font-size: 19px;
     display: inline-block;
+}
+a.create{
+    text-decoration: none;
 }
