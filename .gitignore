@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/SarverSite
 # misc
 .DS_Store
 .env.local

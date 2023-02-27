@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useGlobalContex } from '../../authentication/Hook/ReactContex';
 import "./Login.css"
 
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const navigate = useNavigate()
 
-    const onSubmit = data => console.log(data);
+    const { wrong, setWrong, user, setUser, setToken } = useGlobalContex()
+    
+    const onSubmit = data => {
+        const { email, password } = data;
+
+        const userDoc = {
+            email,
+            password
+        }
+
+        fetch("http://localhost:5000/api/v1/user/login", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userDoc)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success") {
+                    reset()
+                    setUser(data.user)
+                    setToken(data.token)
+                }
+                setWrong(data.message)
+            })
+    };
+
+    if (user) {
+        navigate("/home")
+    }
 
     return (
         <div className='login-container'>
@@ -53,11 +85,14 @@ const Login = () => {
                                         message: "password fild is requerd"
                                     },
                                     minLength: {
-                                        value: 6,
-                                        message: "Use 6 carecter in password or more"
+                                        value: 5,
+                                        message: "Use 5 carecter in password or more"
                                     }
                                 })}
                             />
+                            <span className='login-message'>
+                                {wrong}
+                            </span>
                             <label className="label">
                                 {errors.password?.type === 'required' && <span className='danger-text'>{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className='danger-text'>{errors.password.message}</span>}

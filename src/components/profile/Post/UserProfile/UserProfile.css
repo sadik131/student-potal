@@ -1,0 +1,39 @@
+
+.profile{
+    width: 95%;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+}
+.profile p{
+    font-size: 1.4rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+.profile-info img{
+    height: 70px;
+    width: 70px;
+    border: 3px solid blueviolet;
+    border-radius: 50px;
+}
+.user-info {
+    margin-left: 15px;
+}
+.user-info h3{
+    font-size: 2rem;
+}
+.user-info h4{
+    font-size: 1rem;
+}
+.profile-bio{
+    display: flex;
+    align-items: center;
+}
+.profile-bio svg{
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}

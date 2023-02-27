@@ -1,0 +1,65 @@
+.post-container {
+    margin: 12px 0;
+}
+.post-section {
+    width: 95%;
+    height: auto;
+    margin: 10px auto ;
+    padding: 20px;
+    border-radius: 15px;
+    background: #fff;
+}
+.create-post a{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+.create-post h2 {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.create-post svg{
+    cursor: pointer;
+    font-size: 2rem;
+}
+.post-item{
+    background-color: #e0e0e0;
+    margin: 10px 0; 
+    border-radius: 10px;
+    padding: 20px;
+}
+.sarvices{
+    margin-top: 15px;
+}
+.skill{
+    margin: 10px 0;
+}
+.sarvices button{
+    background-color: rgb(241, 48, 48);
+    border: none;
+    color: white;
+    margin: auto;
+
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+.sarvices svg{
+    display: flex;
+    font-size: 25px;
+
+}
+.user-img {
+    display: flex;
+    align-items: center;
+}
+.user-img img{
+    height: 70px;
+    width: 70px;
+    border: 3px solid blueviolet;
+    border-radius: 50px;
+}

@@ -24,3 +24,10 @@
     margin: 0 10px;
     font-size: 1.5rem;
 }
+.signout-btn{
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+}

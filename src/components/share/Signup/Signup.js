@@ -4,9 +4,28 @@ import { Link } from 'react-router-dom';
 import "./Signup.css"
 
 const Signup = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit ,reset} = useForm();
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const {name , email,password,address,radio:roll} = data;
+        const userDoc = {
+            name,
+            email,
+            password,
+            address,
+            roll
+        }
+        fetch("http://localhost:5000/api/v1/user", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body:JSON.stringify(userDoc)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        
+    };
     return (
         <div className='login-container'>
             <img src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7863.jpg?w=740&t=st=1677426372~exp=1677426972~hmac=25d6739d56bf9ab7fa8835895c425e0ebbe9865a9f7c64aab1515874dc1765bb" alt="" />
@@ -107,45 +126,45 @@ const Signup = () => {
                             </label>
                         </div>
                     </div>
-                            <div className='radio-section'>
-                                <label className="radio-label">
-                                    <span className="label-text">Title :</span>
-                                </label>
-                                <div className='radio-item'>
-                                <input
-                                    type="radio"
-                                    name="title"
-                                    value="User/Student"
-                                    className="radio"
-                                    {...register("radio", {
-                                        required: {
-                                            value: true,
-                                            message: "radio fild is Required"
-                                        },
-                                    })}
-                                />
-                                <p className='radio-text'>Student/user</p>
-                                </div>
-                                <div className='radio-item'>
-                                <input
-                                    type="radio"
-                                    name="title"
-                                    value="student"
-                                    className="radio"
-                                    {...register("radio", {
-                                        required: {
-                                            value: true,
-                                            message: "radio fild is Required"
-                                        },
-                                    })}
-                                />
-                                <p className='radio-text'>Teacher</p>
-                                </div>
-                                <label className="label">
-                                    {errors.radio?.type === 'required' && <span className='danger-text'>{errors.radio.message}</span>}
-                                </label>
-                                
-                            </div>
+                    <div className='radio-section'>
+                        <label className="radio-label">
+                            <span className="label-text">Title :</span>
+                        </label>
+                        <div className='radio-item'>
+                            <input
+                                type="radio"
+                                name="title"
+                                value="Student"
+                                className="radio"
+                                {...register("radio", {
+                                    required: {
+                                        value: true,
+                                        message: "radio fild is Required"
+                                    },
+                                })}
+                            />
+                            <p className='radio-text'>Student/user</p>
+                        </div>
+                        <div className='radio-item'>
+                            <input
+                                type="radio"
+                                name="title"
+                                value="student"
+                                className="radio"
+                                {...register("radio", {
+                                    required: {
+                                        value: true,
+                                        message: "radio fild is Required"
+                                    },
+                                })}
+                            />
+                            <p className='radio-text'>Teacher</p>
+                        </div>
+                        <label className="label">
+                            {errors.radio?.type === 'required' && <span className='danger-text'>{errors.radio.message}</span>}
+                        </label>
+
+                    </div>
                     <input className='login-btn' type="submit" value="Signin" />
                     <p className='forget'>forget Password?</p>
                     <p className='create'>All ready have an account <Link to="/login">Login</Link></p>
