@@ -1,12 +1,41 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { useGlobalContex } from '../../authentication/Hook/ReactContex';
 import "./PostForm.css"
 
 const PostForm = () => {
+
+    const {user} = useGlobalContex()
+
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     
-    const onSubmit = data =>console.log(data)
+    const onSubmit = data =>{
+        const userPost = {
+            name:user.name,
+            email:user.email,
+            photoURL:data.photoUrl,
+            address:user.address,
+            available:data.available,
+            discription:data.discription,
+            subject:data.subject
+        }
+        fetch("http://localhost:5000/api/v1/userPost",{
+            method:"POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body:JSON.stringify(userPost)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.success){
+                reset()
+            }
+        })
+    }
+
     return (
        <div className='post-form'>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -18,18 +47,12 @@ const PostForm = () => {
                         </label>
                         <input
                             type="name"
+                            value={user.name}
+                            disabled
                             placeholder="Enter Your Name"
                             className="input"
-                            {...register("name", {
-                                required: {
-                                    value: true,
-                                    message: "Name fild is Required"
-                                },
-                            })}
+                            {...register("name")}
                         />
-                        <label className="label">
-                            {errors.name?.type === 'required' && <span className='danger-text'>{errors.name.message}</span>}
-                        </label>
                     </div>
 
                     <div className="form-control">
@@ -38,23 +61,12 @@ const PostForm = () => {
                         </label>
                         <input
                             type="email"
+                            value={user.email}
+                            disabled
                             placeholder="Enter Your Email"
                             className="input"
-                            {...register("email", {
-                                required: {
-                                    value: true,
-                                    message: "Email fild is Required"
-                                },
-                                pattern: {
-                                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                    message: 'Enter a valided Email'
-                                }
-                            })}
+                            {...register("email")}
                         />
-                        <label className="label">
-                            {errors.email?.type === 'required' && <span className='danger-text'>{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span className='danger-text'>{errors.email.message}</span>}
-                        </label>
                     </div> 
                     <div className="form-control">
                         <label className="label">
@@ -81,18 +93,12 @@ const PostForm = () => {
                         </label>
                         <input
                             type="address"
+                            disabled
+                            value={user.address}
                             placeholder="Enter Your Address"
                             className="input"
-                            {...register("address", {
-                                required: {
-                                    value: true,
-                                    message: "Address fild is Required"
-                                },
-                            })}
+                            {...register("address")}
                         />
-                        <label className="label">
-                            {errors.address?.type === 'required' && <span className='danger-text'>{errors.address.message}</span>}
-                        </label>
                     </div> 
                     <div className="form-control">
                         <label className="label">
@@ -111,6 +117,25 @@ const PostForm = () => {
                         />
                         <label className="label">
                             {errors.available?.type === 'required' && <span className='danger-text'>{errors.available.message}</span>}
+                        </label>
+                    </div> 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Subject</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Your Subject"
+                            className="input"
+                            {...register("subject", {
+                                required: {
+                                    value: true,
+                                    message: "Subject fild is Required"
+                                },
+                            })}
+                        />
+                        <label className="label">
+                            {errors.subject?.type === 'required' && <span className='danger-text'>{errors.subject.message}</span>}
                         </label>
                     </div> 
                     <div className="form-control">
