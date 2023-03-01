@@ -1,0 +1,46 @@
+.Teacher-post {
+    background-color: #e0e0e0;
+    margin: 10px 30px;
+    border-radius: 10px;
+    padding: 20px;
+}
+.teacher-img {
+    display: flex;
+    align-items: center;
+}
+.teacher-profile{
+
+}
+.teacher-img img {
+    height: 70px;
+    width: 70px;
+    border: 3px solid blueviolet;
+    border-radius: 50px;
+}
+.teacher-info {
+    margin-left: 15px;
+}
+.teacher-info h3 {
+    font-size: 2rem;
+}
+.teacher-info h4 {
+    font-size: 1rem;
+}
+.skill {
+    margin: 10px 0;
+}
+.teacher-sarvices{
+    margin-top: 15px;
+}
+.teacher-sarvices .hire{
+    background-color: #7cb472;
+    border: none;
+    color: white;
+    margin: auto;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    padding: 10px 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+}

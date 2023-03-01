@@ -8,8 +8,8 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate()
 
-    const { wrong, setWrong, user, setUser, setToken } = useGlobalContex()
-    
+    const { wrong, setWrong, user, setUser, setToken, token } = useGlobalContex()
+
     const onSubmit = data => {
         const { email, password } = data;
 
@@ -36,7 +36,8 @@ const Login = () => {
             })
     };
 
-    if (user) {
+    if (token) {
+        localStorage.setItem("accessToken", JSON.stringify(token))
         navigate("/home")
     }
 

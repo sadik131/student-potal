@@ -6,6 +6,7 @@ const ReactContex = React.createContext()
 const AppProvider = ({ children }) => {
     const [ wrong , setWrong] = useState("")
     const [ user , setUser] = useState("")
+    const [teacherPost , setTeacherPost] = useState([])
     const [ token , setToken] = useState("")
 
     const value = {
@@ -14,7 +15,9 @@ const AppProvider = ({ children }) => {
         setUser,
         user,
         setToken,
-        token
+        token,
+        teacherPost,
+        setTeacherPost
     }
 
     return <ReactContex.Provider value={value}>{children}</ReactContex.Provider>

@@ -10,7 +10,6 @@ const Nav = () => {
     const handelLogOut = () => {
         setUser(null)
     }
-    console.log(user)
 
     return (
         <div className='nav-container'>
