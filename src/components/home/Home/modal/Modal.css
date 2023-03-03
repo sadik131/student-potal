@@ -1,0 +1,17 @@
+.modal-section{
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: aliceblue;
+}
+.submit-btn{
+width: 50%;
+padding: 10px 0;
+border: none;
+background-color: #69298b;
+color: white;
+border-radius: 10px;
+cursor: pointer;
+font-size: 18px;
+}

@@ -1,0 +1,23 @@
+.hired-user h1{
+    text-align: center;
+    margin: 20px 0px;
+}
+.hired-profile {
+    background-color: #e0e0e0;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+.hired-img {
+    display: flex;
+    align-items: center;
+}
+.hired-img img{
+    height: 70px;
+    width: 70px;
+    border: 3px
+ solid blueviolet;
+    border-radius: 50px;
+    margin-right: 10px;
+}

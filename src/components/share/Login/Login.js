@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContex } from '../../authentication/Hook/ReactContex';
@@ -8,7 +8,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate()
 
-    const { wrong, setWrong, user, setUser, setToken, token } = useGlobalContex()
+    const { wrong, setWrong, setUser, user, setToken, token } = useGlobalContex()
 
     const onSubmit = data => {
         const { email, password } = data;
@@ -36,10 +36,31 @@ const Login = () => {
             })
     };
 
+    useEffect(() => {
+        fetch("http://localhost:5000/api/v1/user/token", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ token: token })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.status === "success") {
+                    setUser(data.data[0])
+                }
+                else {
+                    console.log("userLoged Out")
+                }
+            })
+    }, [])
+
     if (token) {
         localStorage.setItem("accessToken", JSON.stringify(token))
         navigate("/home")
     }
+
 
     return (
         <div className='login-container'>

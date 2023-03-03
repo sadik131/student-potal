@@ -4,10 +4,10 @@ const ReactContex = React.createContext()
 
 
 const AppProvider = ({ children }) => {
-    const [ wrong , setWrong] = useState("")
-    const [ user , setUser] = useState("")
-    const [teacherPost , setTeacherPost] = useState([])
-    const [ token , setToken] = useState("")
+    const [wrong, setWrong] = useState("")
+    const [user, setUser] = useState("")
+    const [teacherPost, setTeacherPost] = useState([])
+    const [token, setToken] = useState("")
 
     const value = {
         wrong,
@@ -24,9 +24,9 @@ const AppProvider = ({ children }) => {
 }
 
 
-const useGlobalContex = () =>{
+const useGlobalContex = () => {
     return useContext(ReactContex)
 }
 
 
-export { ReactContex, AppProvider , useGlobalContex}
+export { ReactContex, AppProvider, useGlobalContex }

@@ -32,7 +32,7 @@ const Signup = () => {
                 if (data.status) {
                     setUser(data.data)
                     reset()
-                    navigate("/home")
+                    navigate("/login")
                 }
                 else {
                     setWrong()

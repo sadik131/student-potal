@@ -10,7 +10,8 @@ const Post = () => {
     const { user } = useGlobalContex()
     const [post, setPost] = useState([])
     const navigate = useNavigate()
-    
+    console.log(post)
+
     if(!user){
         navigate("/login")
     }
@@ -18,7 +19,7 @@ const Post = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/api/v1/userPost/${user?.email}`)
             .then(res => res.json())
-            .then(data => setPost(data))
+            .then(data => setPost(data.data))
     }, [user]);
 
     return (
@@ -29,10 +30,10 @@ const Post = () => {
                         < AiFillPlusCircle /></Link>}
                 </div>
                 <div className='post-item'>
-                    {!post?.data?.length && <h1>No Post Available For You</h1>}
-                    {/* {
-                        post.map(p=>console.log(p))
-                    } */}
+                    {!post?.length && <h1>No Post Available For You</h1>}
+                    {
+                        post.map(p=><SingelPost key={p._id} p={p}></SingelPost>)
+                    }
                 </div>
             </div>
         </div>
