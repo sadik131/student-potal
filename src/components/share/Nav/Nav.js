@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Nav.css"
 import img from "../../../images/logo.jpg"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContex } from '../../authentication/Hook/ReactContex';
 
 const Nav = () => {
@@ -22,12 +22,13 @@ const Nav = () => {
             }
             
             {user?.roll === "teacher" &&
-            <ul><li><Link to="/hired">Hired Req</Link></li></ul>    
+            <ul><li><Link to="/hired">Hired Req</Link></li></ul>
             }
                 {user && <ul><li><Link to="/profile">Profile</Link></li></ul>}
                 <ul><li>
                     {user ? <button
-                        onClick={handelLogOut} className='signout-btn'>SignOut</button> : <Link to="/login">login</Link>}
+                        onClick={handelLogOut} className='signout-btn'>SignOut</button> 
+                        : <Link to="/login">login</Link>}
                 </li></ul>
             </div>
         </div>

@@ -5,7 +5,7 @@ import { useGlobalContex } from '../../../authentication/Hook/ReactContex';
 
 const UserProfile = () => {
     const {user} = useGlobalContex()
-console.log(user)
+// console.log(user)
     return (
         <div className='profile'>
             <div className='profile-info'>

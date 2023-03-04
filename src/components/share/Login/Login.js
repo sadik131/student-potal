@@ -9,14 +9,13 @@ const Login = () => {
     const navigate = useNavigate()
 
     const { wrong, setWrong, setUser, user, setToken, token } = useGlobalContex()
-
     const onSubmit = data => {
         const { email, password } = data;
-
         const userDoc = {
             email,
             password
         }
+
 
         fetch("http://localhost:5000/api/v1/user/login", {
             method: "POST",
@@ -30,37 +29,20 @@ const Login = () => {
                 if (data.status === "success") {
                     reset()
                     setUser(data.user)
-                    setToken(data.token)
+                    // setToken(data.token)
                 }
                 setWrong(data.message)
             })
     };
-
-    useEffect(() => {
-        fetch("http://localhost:5000/api/v1/user/token", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ token: token })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.status === "success") {
-                    setUser(data.data[0])
-                }
-                else {
-                    console.log("userLoged Out")
-                }
-            })
-    }, [])
-
-    if (token) {
-        localStorage.setItem("accessToken", JSON.stringify(token))
-        navigate("/home")
+    if(user){
+        navigate("/")
     }
 
+    // if (token) {
+    //     localStorage.setItem("accessToken", token)
+    //     navigate("/profile")
+         
+    //  }
 
     return (
         <div className='login-container'>

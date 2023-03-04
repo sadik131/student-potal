@@ -4,7 +4,7 @@ import "./Home.css"
 import Modal from './modal/Modal';
 import TeacherPost from './modal/TeacherPost/TeacherPost';
 const Home = () => {
-    const { teacherPost, setTeacherPost } = useGlobalContex()
+    const { teacherPost, setTeacherPost, user, setUser } = useGlobalContex()
     const [openModal, setOpenModal] = useState(false)
     const [hired, setHired] = useState({})
 
@@ -13,10 +13,13 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setTeacherPost(data.data))
     }, [])
+
     return (
         <>
+        <h1 className='heading'>You Have Some Hireing Result</h1>
             {
                 teacherPost.map(post => <TeacherPost
+                    key={post._id}
                     setOpenModal={setOpenModal}
                     setHired={setHired}
                     openModal={openModal} post={post}></TeacherPost>)

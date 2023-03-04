@@ -61,3 +61,12 @@ a.create{
 .login-message{
     color: red;
 }
+
+@media only screen and (max-width: 600px){
+    .login-container img{
+        display: none;
+    }
+    .login-form{
+        width: 100%;
+    }
+}

@@ -1,12 +1,37 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useGlobalContex } from '../../../authentication/Hook/ReactContex';
 import "./Modal.css"
 
 const Modal = ({ setOpenModal, openModal, hired }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const onSubmit = data => console.log(data)
-    
+    const { user } = useGlobalContex()
+    // console.log(hired)
+    const onSubmit = data => {
+        const userDoc = {
+            name:data.name,
+            email:data.email,
+            address:data.address,
+            timeing:data.timeing,
+            subject:data.subject,
+            teacherId:hired._id
+        }
+        fetch("http://localhost:5000/api/v1/studentReq",{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(userDoc)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.status === "success"){
+                setOpenModal(false)
+            }
+        })
+    }
+
     return (
         <div className='modal-section'>
             <div onClick={() => setOpenModal(!openModal)}>x</div>
@@ -98,13 +123,13 @@ const Modal = ({ setOpenModal, openModal, hired }) => {
                         <span className="label-text">Timing</span>
                     </label>
                     <input
-                        type="subject"
+                        type="text"
                         placeholder="ex.10pm - 11pm"
                         className="input"
-                        {...register("subject", {
+                        {...register("timeing", {
                             required: {
                                 value: true,
-                                message: "Subject fild is Required"
+                                message: "timing fild is Required"
                             }
                         })}
                     />

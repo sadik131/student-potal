@@ -8,8 +8,9 @@
     display: flex;
     align-items: center;
 }
-.teacher-profile{
-
+.heading{
+    text-align: center;
+    margin: 20px 0;
 }
 .teacher-img img {
     height: 70px;

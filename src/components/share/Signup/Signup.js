@@ -28,7 +28,6 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.status) {
                     setUser(data.data)
                     reset()

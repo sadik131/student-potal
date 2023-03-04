@@ -29,7 +29,6 @@ const PostForm = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
             if(data.status === "success"){
                 reset()
             }
@@ -47,7 +46,7 @@ const PostForm = () => {
                         </label>
                         <input
                             type="name"
-                            value={user.name}
+                            value={user?.name}
                             disabled
                             placeholder="Enter Your Name"
                             className="input"
@@ -61,7 +60,7 @@ const PostForm = () => {
                         </label>
                         <input
                             type="email"
-                            value={user.email}
+                            value={user?.email}
                             disabled
                             placeholder="Enter Your Email"
                             className="input"
@@ -94,7 +93,7 @@ const PostForm = () => {
                         <input
                             type="address"
                             disabled
-                            value={user.address}
+                            value={user?.address}
                             placeholder="Enter Your Address"
                             className="input"
                             {...register("address")}

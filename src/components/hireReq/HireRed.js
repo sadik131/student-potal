@@ -1,8 +1,14 @@
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
+import { useGlobalContex } from '../authentication/Hook/ReactContex';
 import "./HireRed.css"
 
 const HireRed = () => {
+    const { user } = useGlobalContex()
+    fetch(`http://localhost:5000/api/v1/teacherHireRoute/${user?.email}`)
+    .then(req=>req.json())
+    .then(data=>console.log(data))
+
     return (
         <div className='hired-user'>
             <h1>You Are hire from this Users</h1>
