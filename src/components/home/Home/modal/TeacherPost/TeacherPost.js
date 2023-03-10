@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TeacherPost = ({ post, setOpenModal, setHired, openModal }) => {
-    
 
     return (
         <div>

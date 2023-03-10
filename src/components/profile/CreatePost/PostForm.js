@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContex } from '../../authentication/Hook/ReactContex';
 import "./PostForm.css"
 
 const PostForm = () => {
-
+    const navigate = useNavigate()
     const {user} = useGlobalContex()
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -30,6 +30,7 @@ const PostForm = () => {
         .then(res=>res.json())
         .then(data=>{
             if(data.status === "success"){
+                navigate("/profile")
                 reset()
             }
         })

@@ -28,13 +28,12 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.status) {
-                    setUser(data.data)
+                if (data.status === "success") {
                     reset()
                     navigate("/login")
                 }
                 else {
-                    setWrong()
+                    setWrong(data.error)
                 }
             })
     };
@@ -178,7 +177,7 @@ const Signup = () => {
                         </label>
 
                     </div>
-                    { }
+                    <p>{wrong}</p>
                     <input className='login-btn' type="submit" value="Signin" />
                     <p className='forget'>forget Password?</p>
                     <p className='create'>All ready have an account <Link to="/login">Login</Link></p>

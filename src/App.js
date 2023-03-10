@@ -20,11 +20,19 @@ function App() {
       <Routes>
         <Route path='/' element={<Banner />}></Route>
         <Route path='/home' element={<PrivetRoute><Home></Home></PrivetRoute>}></Route>
-        <Route path='/postForm' element={<PostForm />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/postForm' element={
+          <PrivetRoute>
+            <PostForm />
+          </PrivetRoute>
+        }></Route>
+        <Route path='/profile' element={<PrivetRoute>
+          <Profile />
+        </PrivetRoute>}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
-        <Route path='/hired' element={<HireRed />}></Route>
+        <Route path='/hired' element={<PrivetRoute>
+          <HireRed />
+        </PrivetRoute>}></Route>
       </Routes>
     </div>
   );

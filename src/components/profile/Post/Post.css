@@ -40,8 +40,7 @@
     background-color: rgb(241, 48, 48);
     border: none;
     color: white;
-    margin: auto;
-
+    margin: 20px auto;
     cursor: pointer;
     font-size: 20px;
     display: flex;
@@ -63,11 +62,18 @@
     border: 3px solid blueviolet;
     border-radius: 50px;
 }
-
+.highLight-text{
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+.sarvices p{
+    font-size: 21px;
+}
 .Teacher-responce{
     text-align: center;
     margin: 20px 0;
 }
+
 
 @media only screen and (max-width: 600px){
     .post-item{

@@ -5,7 +5,7 @@ const ReactContex = React.createContext()
 
 const AppProvider = ({ children }) => {
     const [wrong, setWrong] = useState("")
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
     const [teacherPost, setTeacherPost] = useState([])
     const [token, setToken] = useState("")
 
@@ -21,11 +21,10 @@ const AppProvider = ({ children }) => {
     }
 
     
-    // const storToken = localStorage.getItem("accessToken")
+//     const storToken = localStorage.getItem("accessToken")
+// console.log(storToken)
+//     useEffect(() => {
 
-    // useEffect(() => {
-
-    //     console.log(storToken)
     //     fetch("http://localhost:5000/api/v1/user/token", {
     //         method: "POST",
     //         headers: {
@@ -37,7 +36,6 @@ const AppProvider = ({ children }) => {
     //         .then(data => {
     //             console.log(data)
     //             if (data.status === "success") {
-    //                 // console.log(data,"token value")
     //                 setUser(data.data[0])
     //             }
     //             else {

@@ -29,21 +29,21 @@ const Login = () => {
                 if (data.status === "success") {
                     reset()
                     setUser(data.user)
-                    // setToken(data.token)
+                    setToken(data.token)
                 }
                 setWrong(data.message)
             })
     };
+    
     if(user){
-        navigate("/")
+        navigate("/profile") 
     }
 
-    // if (token) {
-    //     localStorage.setItem("accessToken", token)
-    //     navigate("/profile")
-         
-    //  }
-
+    if (token) {
+        localStorage.setItem("accessToken", token)  
+     }
+     
+     
     return (
         <div className='login-container'>
             <img src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7863.jpg?w=740&t=st=1677426372~exp=1677426972~hmac=25d6739d56bf9ab7fa8835895c425e0ebbe9865a9f7c64aab1515874dc1765bb" alt="" />

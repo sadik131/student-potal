@@ -5,9 +5,8 @@ import "./Modal.css"
 
 const Modal = ({ setOpenModal, openModal, hired }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    
 
-    const { user } = useGlobalContex()
-    // console.log(hired)
     const onSubmit = data => {
         const userDoc = {
             name:data.name,
